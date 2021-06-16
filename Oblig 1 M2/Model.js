@@ -1,7 +1,7 @@
 
 const model = {
     app: {
-        currentPage: 'writeLog', // addOption
+        currentPage: 'display', // addOption
     },
     inputs: {
         loggInputPage: //inputs på loggførings siden
