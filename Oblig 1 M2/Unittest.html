@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>QUnit Example</title>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/qunit/qunit-2.9.2.css"
+    />
+    <script src="Model.js"></script>
+    <script src="LoggInputView.js"></script>
+    <script src="loggInputController.js"></script>
+    <script src="LoggDisplayView.js"></script>
+    <script src="loggDisplayController.js"></script>
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="https://code.jquery.com/qunit/qunit-2.9.2.js"></script>
+
+    <script>
+
+
+      function updateView() {};
+ 
+
+
+
+
+      QUnit.module('endre view', (hooks) => {
+        QUnit.test('endre view', function (assert) {
+            goToDisplayPage();
+            let actual = model.app.currentPage;
+            let expected = 'display';
+          assert.equal(actual, expected);
+        });
+      })
+
+      QUnit.module('remove', (hooks) => {
+        QUnit.test('remove', function (assert) {
+            removeFromArray(0);
+          assert.deepEqual(model.loggDisplayPage.diveLog.length, 0);
+        });
+      });
+
+      QUnit.test('sjekker feilmelding på input', function(assert) {
+        model.inputs.loggInputPage.general.Dykkdato = '';
+        addLogg();
+        const expected = 'Fyll inn dato';  
+        assert.equal(model.loggDisplayPage.diveLog.length, 1);
+      });
+
+      QUnit.test('sjekker feilmelding på input', function(assert) {
+        model.inputs.loggInputPage.general.Dykkdato = '12.12.21';
+        addLogg();  
+        assert.equal(model.loggDisplayPage.diveLog.length, 2);
+      });
+
+
+
+
+
+    </script>
+  </body>
+</html>
